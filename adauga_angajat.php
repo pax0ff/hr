@@ -54,7 +54,7 @@ if (Input::exists()) {
     if ($validate->passed()) {
         $angajat = new Angajat();
         $user = new User();
-        $path = "Angajati/";
+        $path = "Documente angajati/";
         $nume = Input::get('nume');
         $prenume = Input::get('prenume');
         if(!file_exists($path.$nume.$prenume))

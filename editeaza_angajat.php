@@ -3,8 +3,7 @@ require 'core/init.php';
 $id = $_GET['id'];
 $user = $_GET['user'];
 $angajat = new Angajat();
-if(Input::exists()) {
-
+if(Input::exists() && isset($_POST['update'])) {
     try {
         $angajat->update($id, array(
             'username' => Input::get('username'),
@@ -14,7 +13,7 @@ if(Input::exists()) {
             'varsta' => Input::get('varsta'),
             'oras' => Input::get('oras'),
             'join_date' => Input::get('data_angajare'),
-            'departament' => Input::get('departament'), // TODO
+            'departament' => Input::get('departSelect'),
             'functie' => Input::get('functieSelect'),
         ));
         Session::flash('updateAngajatSuccess', 'Toate datele au fost updatate cu success!');
@@ -93,30 +92,38 @@ if(Input::exists()) {
                 ?>
                 <h4 style="text-align: center">Editare angajat</h4>
                 <?php
-                if(Session::exists('updateAngajatSuccess'))
+                if(Session::exists('updateAngajatSuccess') && isset($_SESSION['updateAngajatSuccess']))
                 {
                     echo "<div class='alert alert-success'>".Session::get('updateAngajatSuccess')."</div>";
                 }
                 ?>
                 <form class="text-center border border-light p-5" method="post">
-
+                    <div class="form-group mx-sm-3 mb-2">
                     <?php
 
 
                     foreach($angajati as $c)
                     {
                         echo 'ID:'.$c->id.'<br>';
-                        echo '<label for="Username">Username</label><input name="username" type="text" value="'.$c->username.'"><br>';
-                        echo '<label for="Nume">Nume</label><input name="nume" type="text" value="'.$c->nume.'"><br>';
-                        echo '<label for="Prenume">Prenume</label><input name="prenume" type="text" value="'.$c->prenume.'"><br>';
-                        echo '<label for="Varsta">Prenume</label><input name="varsta" type="text" value="'.$c->varsta.'"><br>';
-                        echo '<label for="Oras">Prenume</label><input name="oras" type="text" value="'.$c->oras.'"><br>';
-                        echo '<label for="Email">E-mail</label><input name="email" type="text" value="'.$c->email.'"><br>';
-                        echo '<label for="Departament">Departament</label><input name="motiv"  type="text" value="'.$c->departament.'"><br>';
+                        echo '<label for="Username">Username</label><input class="form-control" name="username" type="text" value="'.$c->username.'"><br>';
+                        echo '<label for="Nume">Nume</label><input class="form-control" name="nume" type="text" value="'.$c->nume.'"><br>';
+                        echo '<label for="Prenume">Prenume</label><input class="form-control" name="prenume" type="text" value="'.$c->prenume.'"><br>';
+                        echo '<label for="Varsta">Prenume</label><input class="form-control" name="varsta" type="text" value="'.$c->varsta.'"><br>';
+                        echo '<label for="Oras">Prenume</label><input class="form-control" name="oras" type="text" value="'.$c->oras.'"><br>';
+                        echo '<label for="Email">E-mail</label><input class="form-control" name="email" type="text" value="'.$c->email.'"><br>';
+                        //<input class="form-control" name="motiv"  type="text" value="'.$c->departament.'"><br>';
                        // echo '<label for="Functie">Functie</label><input name="motiv"  type="text" value="'.$c->functie.'"><br>';
                     }
-                   echo '<select class="browser-default custom-select" name="functieSelect">';
-
+                    //DEPARTAMENT
+                    echo '<label for="Departament">Departament</label><select class="browser-default custom-select" name="departSelect">';
+                    $departament = new Departament();
+                    $departamente = $departament->getData();
+                    foreach ($departamente as $item) {
+                        echo '<option value="'.$item->id.'" name="departament">'.$item->nume.'</option>';
+                    }
+                    echo '</select>';
+                    //FUNCTIE
+                   echo '<label for="Functie">Functie</label><select class="browser-default custom-select" name="functieSelect">';
                         $functie = new Functie();
                         $functii = $functie->getData();
                         foreach($functii as $m)
@@ -124,14 +131,18 @@ if(Input::exists()) {
                             echo '<option value="'.$m->nume_functie.'" name="functie">'.$m->nume_functie.'</option>';
                         }
                     echo '</select>';
+
+
+                        //DATA ANGAJARII
                     foreach($angajati as $c)
                     {
-                        echo "<pre>";
-                        echo '<label for="Data angajarii">Data angajare</label><input name="data_angajare"  type="date" value="'.$c->join_date.'"><br>';
+
+                        echo '<label for="Data angajarii">Data angajare</label><input class="form-control" name="data_angajare"  type="date" value="'.$c->join_date.'"><br>';
 
                     }
                     ?>
-                    <input class="btn btn-primary" type="submit" value="Update">
+                    <input class="btn btn-primary" type="submit" value="Update" name="update">
+                </div>
                 </form>
 
             </div>

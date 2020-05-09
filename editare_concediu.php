@@ -8,7 +8,6 @@ if(Input::exists()) {
         try {
             $concediu->update($id, array(
                 'nume' => Input::get('nume'),
-                'prenume' => Input::get('prenume'),
                 'email' => Input::get('email'),
                 'motiv' => Input::get('motiv'),
                 'data_inceput' => Input::get('data_inceput'),
@@ -101,12 +100,12 @@ if(Input::exists()) {
                         foreach($concedii as $c)
                         {
                             echo 'ID:'.$c->id.'<br>';
-                            echo '<label for="Nume">Nume</label><input name="nume" type="text" value="'.$c->nume.'"><br>';
-                            echo '<label for="Prenume">Prenume</label><input name="prenume" type="text" value="'.$c->prenume.'"><br>';
-                            echo '<label for="Email">E-mail</label><input name="email" type="text" value="'.$c->email.'"><br>';
-                            echo '<label for="Motiv">Motiv</label><input name="motiv"  type="text" value="'.$c->motiv.'"><br>';
-                            echo '<label for="Data inceput">Data inceput</label><input name="data_inceput"  type="date" value="'.$c->data_inceput.'"><br>';
-                            echo '<label for="Data sfarsit">Data revenire</label><input name="data_sfarsit"  type="date" value="'.$c->data_sfarsit.'"><br>';
+                            echo '<label for="Nume">Nume</label><input class="form-control"  name="nume" type="text" value="'.$c->nume.'"><br>';
+                           // echo '<label for="Prenume">Prenume</label><input class="form-control"  name="prenume" type="text" value="'.$c->prenume.'"><br>';
+                            echo '<label for="Email">E-mail</label><input class="form-control"  name="email" type="text" value="'.$c->email.'"><br>';
+                            echo '<label for="Motiv">Motiv</label><input class="form-control"  name="motiv"  type="text" value="'.$c->motiv.'"><br>';
+                            echo '<label for="Data inceput">Data inceput</label><input class="form-control"  name="data_inceput"  type="date" value="'.$c->data_inceput.'"><br>';
+                            echo '<label for="Data sfarsit">Data revenire</label><input class="form-control"  name="data_sfarsit"  type="date" value="'.$c->data_sfarsit.'"><br>';
                         }
                         ?>
                         <input class="btn btn-primary" type="submit" value="Update">

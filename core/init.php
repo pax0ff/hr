@@ -17,6 +17,12 @@ $GLOBALS['config'] = array(
     'sessions' => array(
         'session_name' => 'user',
         'token_name' => 'token'
+    ),
+    'date_firma' => array(
+        'nume' => 'ITDESK',
+        'cod_fiscal' => "RO12345678",
+        'reg_comert' => "J23/123/1234567",
+        'nr_inregistrare'=> ""
     )
 );
 
