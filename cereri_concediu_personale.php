@@ -84,7 +84,7 @@ $usera = $_GET['user'];
                             <th scope="col">Data inceput</th>
                             <th scope="col">Data revenire</th>
                             <th scope="col">Adaugat de</th>
-                            <th scope="col">Aprobat</th>
+                            <th scope="col">Status</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -100,12 +100,16 @@ $usera = $_GET['user'];
                             echo '<th>'.$c->data_inceput.'</th>';
                             echo '<th>'.$c->data_sfarsit.'</th>';
                             echo '<th>'.$c->adaugat_de.'</th>';
-                            if($c->aprobat == 0)
+                            if($c->aprobat == 1 && $c->anulat == 0)
                             {
-                                echo "<th><a href='aprobare_concediu?user={$usera}&id={$c->id}&aproba=1' class='btn btn-secondary disabled'>Neaprobat</a></th>";
+                                echo "<th><a class='btn btn-success disabled'>Aprobat</a></th>";
+                            }
+                            else if($c->aprobat == 0 && $c->anulat == 1)
+                            {
+                                echo "<th><a class='btn btn-danger disabled'>Neaprobat</a></th>";
                             }
                             else {
-                                echo "<th><a href='aprobare_concediu?user={$usera}&id={$c->id}&dezaproba=1' class='btn btn-success disabled' aria-disabled='true'>Aprobat</a></th>";
+                                echo "<th><a class='btn btn-default disabled' aria-disabled='true'>In asteptare</a></th>";
                             }
 
                             echo '</tr>';

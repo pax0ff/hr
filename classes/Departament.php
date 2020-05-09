@@ -65,4 +65,23 @@ class Departament
         }
         return  $this->data()->results();
     }
+
+    public function getDepartmentManagers($departament)
+    {
+        $data = $this->_db->get('users', array('group', '=', $departament));
+        if($data->count()) {
+            $this->_data = $data;
+        }
+        return  $this->data()->results();
+    }
+
+    public function getManagerForCurrentDepartment($id)
+    {
+        $data = $this->_db->get('`users`', array('`id`', '=', $id));
+        if($data->count()) {
+            $this->_data = $data;
+        }
+        return  $this->data()->results();
+    }
+
 }

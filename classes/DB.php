@@ -65,6 +65,28 @@ class DB {
             return $this;
         }
     }
+    public function actionAnd($action, $table, $where = array(),$and=array()) {
+        if(count($where) === 3 && count($and) === 3) {
+            $operators = array('=', '>', '<', '>=', '<=');
+            $andOperators = array('=', '>', '<', '>=', '<=');
+            $fieldAnd = $and[0];
+            $operatorAnd = $and[1];
+            $valueAnd = $and[2];
+            $field = $where[0];
+            $operator = $where[1];
+            $value = $where[2];
+
+            if(in_array($operator, $operators)) {
+                $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ? AND {$fieldAnd} {$operatorAnd} ?";
+
+                if(!$this->query($sql, array($value))->error()) {
+                    return $this;
+                }
+            }
+
+        }
+        return false;
+    }
     public function action($action, $table, $where = array()) {
         if(count($where) === 3) {
             $operators = array('=', '>', '<', '>=', '<=');
@@ -135,6 +157,11 @@ class DB {
     public function get($table, $where) {
         return $this->action('SELECT *', $table, $where);
     }
+    public function getAnd($table, $where, $and)
+    {
+        return $this->actionAnd('SELECT *', $table, $where, $and);
+    }
+
 
     public function results() {
         return $this->_results;

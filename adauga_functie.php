@@ -1,7 +1,7 @@
 <?php
 require_once 'core/init.php';
 
-
+$functie = new Functie();
 if (Input::exists()) {
     $validate = new Validate();
     $validate->check($_POST, array(
@@ -10,38 +10,16 @@ if (Input::exists()) {
             'required' => true,
             'min' => 2,
             'max' => 50
-        ),
-        'prenume' => array(
-            'departament' => "departament",
-            'required' => true,
-            'min' => 2,
-            'max'=> 50
         )
     ));
 
     if ($validate->passed()) {
-        $demisie = new Demisie();
         try {
-            $demisie->createDemisie(array(
-                'nume' => Input::get('nume'),
-                'prenume' => Input::get('prenume'),
-                'email' => Input::get('email'),
-                'aprobat' => 0,
-                'data' => Input::get('data_demisie'),
-                'adaugat_de' => $_GET['user']
+            $functie->createFunctie(array(
+                'nume_functie' => Input::get('nume')
             ));
-            $length = count($demisie->getUserEmail());
-            $data = $demisie->getUserEmail()[$length-1]->data;
-
-            $emailDemisie = $demisie->getUserEmail()[$length-1]->email;
-            $dataForPDF = $demisie->getDataFromEmployee($emailDemisie)[0];
-            $pdf = new PDFGenerator();
-            $pdf->AddPage('P','A4');
-            $pdf->demisieHeader();
-            $pdf->demsieContent($dataForPDF->nume,$dataForPDF->prenume,$dataForPDF->functie,$data);
-            $pdf->demisieFooter();
-            $pdf->genereazaDemisiePDF();
-
+            Session::flash('functieSuccess', 'Functia a fost adaugata!');
+            Redirect::to($_SERVER['PHP_SELF'].'?user='.$_GET['user']);
 
         } catch(Exception $e) {
             echo $e->getTraceAsString(), '<br>';
@@ -64,7 +42,7 @@ if (Input::exists()) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Demisie</title>
+    <title>Angajati</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -86,7 +64,7 @@ if (Input::exists()) {
     <div id="page-content-wrapper">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+            <button class="btn btn-primary" id="menu-toggle">Open menu</button>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -118,33 +96,19 @@ if (Input::exists()) {
         <div class="container col-lg-5 col-md-5 col-sm-5">
             <div class="col-md-12 col-lg-12 justify-content-center" id="formmm">
                 <form class="text-center border border-light p-5" action="" method="post">
-                    <p class="h4 mb-4">Demisie</p>
+                    <p class="h4 mb-4">Adaugare departament</p>
+                    <?php if(Session::exists('functieSuccess')) { ?>
+                        <div class="text-center alert alert-success">
+                            <?php echo '<p>' . Session::flash('functieSuccess'). '</p>'; ?>
+                        </div>
+                    <?php } ?>
+                    <!-- Nume -->
+                    <label for='nume'>Nume functie</label>
+                    <input type="text" name="nume" id="nume" class="form-control mb-6" placeholder="Nume functie">
+                    <input class="btn btn-info btn-block my-4" type="submit" value="Adauga functie">
 
-                    <!-- Motiv -->
-                    <label for='nume'>Nume</label>
-                    <input type="text" name="nume" id="nume" class="form-control mb-6" placeholder="Nume">
-
-                    <!-- Departament -->
-                    <label for='prenume'>Prenume</label>
-                    <input type="text" name="prenume" id="prenume" class="form-control mb-6" placeholder="Prenume">
-
-
-                    <!-- Locatie -->
-                    <label for='email'>Email</label>
-                    <input type="email" name="email" id="email" class="form-control mb-6" placeholder="Email">
-
-
-                    <label for='data'>Data</label>
-                    <input type="date" name="data_demisie" id="data_demisie" class="form-control mb-6">
-
-
-                    <input type="hidden" name="adaugat_de" id="adaugat_de" value="<?php echo $_GET['user'] ?>">
-
-
-                    <input class="btn btn-info btn-block my-4" type="submit" value="Adauga demisie & genereaza PDF">
 
                 </form>
-
             </div>
         </div>
         <!-- /#page-content-wrapper -->

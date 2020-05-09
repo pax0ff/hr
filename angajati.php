@@ -103,8 +103,8 @@ $usera = $_GET['user'];
                                     echo '<th>'.$employee->join_date.'</th>';
 
                                     echo "<th>
-                                                <a href='editare_concediu?user={$usera}&id={$employee->id}' class='btn btn-warning'>Editeaza</a></th>
-                                                <th><a href='stergere_cerere?user={$usera}&id={$employee->id}' class='btn btn-danger' style='margin-left: 1rem;'>Sterge cerere</a>
+                                                <a href='editeaza_angajat?user={$usera}&id={$employee->id}' class='btn btn-warning'>Editeaza</a></th>
+                                                <th><a href='sterge_angajat?user={$usera}&id={$employee->id}' class='btn btn-danger' style='margin-left: 1rem;'>Sterge cerere</a>
                                           </th>";
 
 

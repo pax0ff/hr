@@ -118,5 +118,30 @@ class User {
     public function isLoggedIn() {
         return $this->isLoggedIn;
     }
+    public function getManagers()
+    {
+        $data = $this->_db->get('`users`', array('`group`', '=', '7'));
+        if($data->count()) {
+            $this->_data = $data;
+        }
+        return  $this->data()->results();
+    }
+    public function getManagerById($id)
+    {
+        $data = $this->_db->get('`users`', array('`id`', '=', $id));
+        if($data->count()) {
+            $this->_data = $data;
+        }
+        return  $this->data()->results();
+    }
+
+    public function getUsers()
+    {
+        $data = $this->_db->get('`users`', array('1', '=', '1'));
+        if($data->count()) {
+            $this->_data = $data;
+        }
+        return  $this->data()->results();
+    }
 
 }

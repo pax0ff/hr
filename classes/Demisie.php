@@ -92,4 +92,13 @@ class Demisie
         }
         return  $this->data()->results();
     }
+
+    public function getUsers()
+    {
+        $data = $this->_db->get('`users`', array('1', '=', '1'));
+        if($data->count()) {
+            $this->_data = $data;
+        }
+        return  $this->data()->results();
+    }
 }

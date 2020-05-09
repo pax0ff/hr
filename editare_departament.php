@@ -8,7 +8,7 @@ if(Input::exists()) {
     try {
         $departament->update($id, array(
             'nume' => Input::get('nume'),
-            'manager' => Input::get('manager')
+            'manager' => Input::get('departSelect')
         ));
         Session::flash('updateDepartamentSuccess', 'Toate datele au fost updatate cu success!');
         //Redirect::to('index.php');
@@ -84,7 +84,7 @@ if(Input::exists()) {
                 <?php
                 $depart = $departament->getDepartamentDataById($id);
                 ?>
-                <h4 style="text-align: center">Editare sedinta</h4>
+                <h4 style="text-align: center">Editare departament</h4>
                 <?php
                 if(Session::exists('updateDepartamentSuccess'))
                 {
@@ -98,9 +98,26 @@ if(Input::exists()) {
                     {
                         echo 'ID:'.$s->id.'<br>';
                         echo '<div class="form-group mx-sm-3 mb-2"><label for="Nume">Nume</label><input name="nume" class="form-control" type="text" value="'.$s->nume.'"><br>';
-                        echo '<label for="Manager">Manager</label><input name="manager" class="form-control" type="text" value="'.$s->manager.'"></div>';
                     }
                     ?>
+                    <?php
+                        $managerID = $departament->getDepartamentDataById($id)[0]->manager;
+                        $managerData = $departament->getManagerForCurrentDepartment($managerID)[0];
+                        $currentManagerName = $managerData->name;
+                        $currentManagerPrenume = $managerData->prenume;
+                    ?>
+                    <label for='manager'>Manager</label>
+                    <select class="browser-default custom-select" name="departSelect">
+                        <?php
+                        echo '<option value="'.$managerID.'" name="manager" selected>'. $currentManagerName.' '.$currentManagerPrenume.'</option>';
+                        $user = new User();
+                        $manager = $user->getManagers();
+                        foreach($manager as $m)
+                        {
+                            echo '<option value="'.$m->id.'" name="manager">'.$m->name.' '.$m->prenume.'</option>';
+                        }
+                        ?>
+                    </select>
                     <input class="btn btn-primary" type="submit" value="Update">
                 </form>
 

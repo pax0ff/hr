@@ -2,19 +2,22 @@
 require 'core/init.php';
 $id = $_GET['id'];
 $user = $_GET['user'];
-$concediu = new Concediu();
+$angajat = new Angajat();
 if(Input::exists()) {
 
     try {
-        $concediu->update($id, array(
+        $angajat->update($id, array(
+            'username' => Input::get('username'),
             'nume' => Input::get('nume'),
             'prenume' => Input::get('prenume'),
             'email' => Input::get('email'),
-            'motiv' => Input::get('motiv'),
-            'data_inceput' => Input::get('data_inceput'),
-            'data_sfarsit' => Input::get('data_sfarsit'),
+            'varsta' => Input::get('varsta'),
+            'oras' => Input::get('oras'),
+            'join_date' => Input::get('data_angajare'),
+            'departament' => Input::get('departament'), // TODO
+            'functie' => Input::get('functieSelect'),
         ));
-        Session::flash('updateConcediuSuccess', 'Toate datele au fost updatate cu success!');
+        Session::flash('updateAngajatSuccess', 'Toate datele au fost updatate cu success!');
         //Redirect::to('index.php');
 
     } catch(Exception $e) {
@@ -31,7 +34,7 @@ if(Input::exists()) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Concedii</title>
+    <title>ANGAJAT - editare</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -86,27 +89,46 @@ if(Input::exists()) {
         <div class="container col-lg-5 col-md-5 col-sm-5">
             <div class="col-md-12 col-lg-12 justify-content-center">
                 <?php
-                $concedii = $concediu->getDataById($id);
+                $angajati = $angajat->getAngajatDataById($id);
                 ?>
-                <h4 style="text-align: center">Editare concediu</h4>
+                <h4 style="text-align: center">Editare angajat</h4>
                 <?php
-                if(Session::exists('updateConcediuSuccess'))
+                if(Session::exists('updateAngajatSuccess'))
                 {
-                    echo "<div class='alert alert-success'>".Session::get('updateConcediuSuccess')."</div>";
+                    echo "<div class='alert alert-success'>".Session::get('updateAngajatSuccess')."</div>";
                 }
                 ?>
                 <form class="text-center border border-light p-5" method="post">
 
                     <?php
-                    foreach($concedii as $c)
+
+
+                    foreach($angajati as $c)
                     {
                         echo 'ID:'.$c->id.'<br>';
+                        echo '<label for="Username">Username</label><input name="username" type="text" value="'.$c->username.'"><br>';
                         echo '<label for="Nume">Nume</label><input name="nume" type="text" value="'.$c->nume.'"><br>';
                         echo '<label for="Prenume">Prenume</label><input name="prenume" type="text" value="'.$c->prenume.'"><br>';
+                        echo '<label for="Varsta">Prenume</label><input name="varsta" type="text" value="'.$c->varsta.'"><br>';
+                        echo '<label for="Oras">Prenume</label><input name="oras" type="text" value="'.$c->oras.'"><br>';
                         echo '<label for="Email">E-mail</label><input name="email" type="text" value="'.$c->email.'"><br>';
-                        echo '<label for="Motiv">Motiv</label><input name="motiv"  type="text" value="'.$c->motiv.'"><br>';
-                        echo '<label for="Data inceput">Data inceput</label><input name="data_inceput"  type="date" value="'.$c->data_inceput.'"><br>';
-                        echo '<label for="Data sfarsit">Data revenire</label><input name="data_sfarsit"  type="date" value="'.$c->data_sfarsit.'"><br>';
+                        echo '<label for="Departament">Departament</label><input name="motiv"  type="text" value="'.$c->departament.'"><br>';
+                       // echo '<label for="Functie">Functie</label><input name="motiv"  type="text" value="'.$c->functie.'"><br>';
+                    }
+                   echo '<select class="browser-default custom-select" name="functieSelect">';
+
+                        $functie = new Functie();
+                        $functii = $functie->getData();
+                        foreach($functii as $m)
+                        {
+                            echo '<option value="'.$m->nume_functie.'" name="functie">'.$m->nume_functie.'</option>';
+                        }
+                    echo '</select>';
+                    foreach($angajati as $c)
+                    {
+                        echo "<pre>";
+                        echo '<label for="Data angajarii">Data angajare</label><input name="data_angajare"  type="date" value="'.$c->join_date.'"><br>';
+
                     }
                     ?>
                     <input class="btn btn-primary" type="submit" value="Update">

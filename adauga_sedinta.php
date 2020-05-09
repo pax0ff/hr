@@ -1,7 +1,7 @@
 <?php
 require_once 'core/init.php';
 
-
+$sedinta = new Sedinta();
 if (Input::exists()) {
     $validate = new Validate();
     $validate->check($_POST, array(
@@ -10,12 +10,6 @@ if (Input::exists()) {
             'required' => true,
             'min' => 2,
             'max' => 50
-        ),
-        'departament' => array(
-            'departament' => "departament",
-            'required' => true,
-            'min' => 2,
-            'max'=> 50
         ),
         'locatie' => array(
             'locatie' => 'locatie',
@@ -30,12 +24,12 @@ if (Input::exists()) {
     ));
 
     if ($validate->passed()) {
-        $sedinta = new Sedinta();
+
 
         try {
             $sedinta->createSedinta(array(
                 'motiv' => Input::get('motiv'),
-                'departament' => Input::get('departament'),
+                'departament' => Input::get('departSelect'),
                 'locatie' => Input::get('locatie'),
                 'organizator' => Input::get('organizator'),
                 'data' => Input::get('dataSedinta')
@@ -119,7 +113,7 @@ if (Input::exists()) {
         <div class="container col-lg-5 col-md-5 col-sm-5">
             <div class="col-md-12 col-lg-12 justify-content-center" id="formmm">
                 <form class="text-center border border-light p-5" action="" method="post">
-                    <p class="h4 mb-4">Sedinte</p>
+                    <p class="h4 mb-4">Adauga sedinta</p>
                     <?php if(Session::exists('sedintaSuccess')) { ?>
                         <div class="text-center alert alert-success">
                             <?php echo '<p>' . Session::flash('sedintaSuccess'). '</p>'; ?>
@@ -131,7 +125,16 @@ if (Input::exists()) {
 
                     <!-- Departament -->
                     <label for='prenume'>Departament</label>
-                    <input type="text" name="departament" id="departament" class="form-control mb-6" placeholder="departament">
+                    <select class="browser-default custom-select" name="departSelect">
+                        <?php
+
+                        $departamente = $sedinta->getDepartments();
+                        foreach ($departamente as $d)
+                        {
+                            echo "<option value='$d->id'>".$d->nume."</option>";
+                        }
+                        ?>
+                    </select>
 
                     <!-- Locatie -->
                     <label for='motiv'>Locatie</label>

@@ -79,4 +79,13 @@ class Sedinta
             <div class="alert alert-danger">User-ul nu a fost gasit</div>
         <?php    }
     }
+
+    public function getDepartments()
+    {
+        $data = $this->_db->get('departamente', array('1', '=', '1'));
+        if($data->count()) {
+            $this->_data = $data;
+        }
+        return  $this->data()->results();
+    }
 }

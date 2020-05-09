@@ -81,7 +81,7 @@ $usera = $_GET['user'];
                             <th scope="col">Data inceput</th>
                             <th scope="col">Data revenire</th>
                             <th scope="col">Adaugat de</th>
-                            <th scope="col">Aprobat</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Actiuni</th>
                         </tr>
                         </thead>
@@ -98,17 +98,43 @@ $usera = $_GET['user'];
                                     echo '<th>'.$c->data_inceput.'</th>';
                                     echo '<th>'.$c->data_sfarsit.'</th>';
                                     echo '<th>'.$c->adaugat_de.'</th>';
-                                    if($c->aprobat == 0)
+
+
+                                    if($c->aprobat == 0 && $c->anulat == 0)
                                     {
-                                        echo "<th><a href='aprobare_concediu?user={$usera}&id={$c->id}&aproba=1' class='btn btn-success'>Aproba</a></th>";
+                                        echo "<th><a class='btn btn-default disabled'>In asteptare</a></th>";
+                                    }
+                                    else if($c->aprobat == 1 && $c->anulat ==0 )
+                                    {
+                                        echo "<th><a class='btn btn-success disabled'>Aprobat</a></th>";
                                     }
                                     else {
-                                        echo "<th><a href='aprobare_concediu?user={$usera}&id={$c->id}&dezaproba=1' class='btn btn-secondary' aria-disabled='true'>Dezaproba</a></th>";
+                                        echo "<th><a class='btn btn-secondary disabled' aria-disabled='true'>Neaprobat</a></th>";
                                     }
-                                    echo "<th>
-                                                <a href='editare_concediu?user={$usera}&id={$c->id}' class='btn btn-warning'>Editeaza</a>
-                                                <a href='stergere_cerere?user={$usera}&id={$c->id}' class='btn btn-danger' style='margin-left: 1rem;'>Sterge cerere</a>
+                                   // echo "<th>";
+                                    if($c->aprobat == 0 && $c->anulat == 0)
+                                {
+                                    echo "<th><a href='aprobare_concediu?user={$usera}&id={$c->id}&aproba=1&anulat=0' class='btn btn-success'>Aproba</a>
+                                            <a href='aprobare_concediu?user={$usera}&id={$c->id}&aproba=0&anulat=1' class='btn btn-dark'>Dezaproba</a>
+                                            <a href='editare_concediu?user={$usera}&id={$c->id}' class='btn btn-warning' style='margin-left: 1rem;'>Editeaza</a>
+                                             <a href='stergere_cerere?user={$usera}&id={$c->id}' class='btn btn-danger' style='margin-left: 1rem;'>Sterge cerere</a>
                                           </th>";
+                                }
+                                    else if($c->aprobat == 1 && $c->anulat == 0 )
+                                    {
+                                        echo "<th><a href='aprobare_concediu?user={$usera}&id={$c->id}&aproba=0&anulat=0' class='btn btn-info'>Modifica</a>
+                                                <!--<a href='editare_concediu?user={$usera}&id={$c->id}' class='btn btn-warning' style='margin-left: 1rem;'>Editeaza</a>-->
+                                               <a href='stergere_cerere?user={$usera}&id={$c->id}' class='btn btn-danger' style='margin-left: 1rem;'>Sterge cerere</a>
+                                          </th>";
+                                    }
+                                    else {
+                                        echo "<th><a href='aprobare_concediu?user={$usera}&id={$c->id}&aproba=0&anulat=0' class='btn btn-info'>Modifica</a>
+                                                <!--<a href='editare_concediu?user={$usera}&id={$c->id}' class='btn btn-warning' style='margin-left: 1rem;'>Editeaza</a>-->
+                                               <a href='stergere_cerere?user={$usera}&id={$c->id}' class='btn btn-danger' style='margin-left: 1rem;'>Sterge cerere</a>
+                                          </th>";
+                                    }
+
+
 
 
                                     echo '</tr>';
@@ -119,14 +145,69 @@ $usera = $_GET['user'];
                 </div>
             </div>
         </div>
+        <style type="text/css">
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+                grid-auto-rows: 1fr;
+            }
+
+            .grid::before {
+                content: '';
+                width: 0;
+                padding-bottom: 100%;
+                grid-row: 1 / 1;
+                grid-column: 1 / 1;
+            }
+
+            .grid > *:first-child {
+                grid-row: 1 / 1;
+                grid-column: 1 / 1;
+            }
+
+            /* Just to make the grid visible */
+
+            .grid > * {
+                background: rgba(0,0,0,0.2);
+                border: 1px solid black;
+            }
+            #day {
+                padding-left: 10px;
+                padding-top: 5px;
+            }
+
+        </style>
+        <div class="container" style="margin-top:30px;margin-bottom: 30px;">
+            <div class="calendar">
+                <div class="grid">
+                    <?php
+                    $currentMonth = date("n");
+                    $currentYear = date("Y");
+                    $daysOfCurrentMonth = cal_days_in_month(1,$currentMonth,$currentYear);
+                    for($i=1;$i<=$daysOfCurrentMonth;$i++)
+                    {
+                        echo '<span id="day">'.$i.'</span>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <?php
+            echo "<pre>";
+            foreach($concedii as $c)
+            {
+                //echo $c->data_inceput."<br>";
+                $inceput  = strtotime($c->data_inceput);
+                $sfarsit = strtotime($c->data_sfarsit);
+                $dataInceput = date("d-n-Y",$inceput);
+                $dataSfarsit = date("d-n-Y",$sfarsit);
+                echo $dataInceput."-----".$dataSfarsit."<br>";
+            }
+            ?>
+        </div>
     </div>
 </div>
 <!-- /#page-content-wrapper -->
 
-</div>
-<div class="container">
-
-</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 

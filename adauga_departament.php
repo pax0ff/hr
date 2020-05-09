@@ -1,7 +1,7 @@
 <?php
 require_once 'core/init.php';
 
-
+$departament = new Departament();
 if (Input::exists()) {
     $validate = new Validate();
     $validate->check($_POST, array(
@@ -12,20 +12,16 @@ if (Input::exists()) {
             'max' => 50
         ),
         'manager' => array(
-            'manager' => "manager",
-            'required' => true,
-            'min' => 3,
-            'max'=> 50
+            'departSelect' => "departSelect"
         )
     ));
 
     if ($validate->passed()) {
-        $departament = new Departament();
 
         try {
             $departament->adaugaDepartament(array(
                 'nume' => Input::get('nume'),
-                'manager' => Input::get('manager')
+                'manager' => Input::get('departSelect')
             ));
             Session::flash('departamentSuccess', 'Departamentul a fost adaugat!');
             Redirect::to($_SERVER['PHP_SELF'].'?user='.$_GET['user']);
@@ -51,7 +47,7 @@ if (Input::exists()) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Adaugare angajat</title>
+    <title>Angajati</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -105,7 +101,7 @@ if (Input::exists()) {
         <div class="container col-lg-5 col-md-5 col-sm-5">
             <div class="col-md-12 col-lg-12 justify-content-center" id="formmm">
                 <form class="text-center border border-light p-5" action="" method="post">
-                    <p class="h4 mb-4">Adaugare angajat</p>
+                    <p class="h4 mb-4">Adaugare departament</p>
                     <?php if(Session::exists('departamentSuccess')) { ?>
                         <div class="text-center alert alert-success">
                             <?php echo '<p>' . Session::flash('departamentSuccess'). '</p>'; ?>
@@ -114,9 +110,20 @@ if (Input::exists()) {
                     <!-- Nume -->
                     <label for='nume'>Nume departament</label>
                     <input type="text" name="nume" id="nume" class="form-control mb-6" placeholder="Nume departament">
-
                     <label for='manager'>Manager</label>
-                    <input type="text" name="manager" id="password" class="form-control mb-6" placeholder="Manager">
+                    <select class="browser-default custom-select" name="departSelect">
+
+                    <?php
+                        $user = new User();
+                        $manager = $user->getManagers();
+                        foreach($manager as $m)
+                        {
+                            echo '<option value="'.$m->id.'" name="manager">'.$m->name.' '.$m->prenume.'</option>';
+                        }
+                    ?>
+                    </select>
+
+                    <!--<input type="text" name="manager" id="password" class="form-control mb-6" placeholder="Manager">-->
 
 
                     <input class="btn btn-info btn-block my-4" type="submit" value="Adauga concediu">
