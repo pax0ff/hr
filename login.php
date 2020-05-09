@@ -32,6 +32,10 @@ if(Input::exists()) {
                 {
                     Redirect::to('dashboard_ceo?user='.$data->username);
                 }
+                else if($user->hasPermission('paza'))
+                {
+                    Redirect::to('dashboard_paza?user='.$data->username);
+                }
                 else {
                     Redirect::to('index.php');
                 }

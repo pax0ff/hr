@@ -5,11 +5,9 @@ require_once 'core/init.php';
 if (Input::exists()) {
     $validate = new Validate();
     $validate->check($_POST, array(
-        'nume' => array(
-            'nume' => 'nume',
+        'numeSelect' => array(
+            'numeSelect' => 'numeSelect',
             'required' => true,
-            'min' => 2,
-            'max' => 50
         ),
         'motiv' => array(
             'motiv' => "motiv",
@@ -17,14 +15,8 @@ if (Input::exists()) {
             'min' => 3,
             'max'=> 50
         ),
-        'prenume' => array(
-            'prenume' => 'prenume',
-            'required' => true,
-            'min' => 2,
-            'max' => 50
-        ),
         'email' => array(
-            'email' => 'E-mail',
+            'email' => 'email',
             'required' => true,
             'min' => 2,
             'max' => 50
@@ -44,9 +36,8 @@ if (Input::exists()) {
 
         try {
             $concediu->createConcediu(array(
-                'nume' => Input::get('nume'),
-                'prenume' => Input::get('prenume'),
-                'email' => Input::get('email'),
+                'nume' => Input::get('numeSelect'),
+                'email' => $_POST['email'],
                 'motiv' => Input::get('motiv'),
                 'data_inceput' => Input::get('dateStart'),
                 'data_sfarsit' => Input::get('dateEnd'),
@@ -147,7 +138,7 @@ if (Input::exists()) {
                         $angajati = $angajat->getData();
                         foreach($angajati as $m)
                         {
-                            echo '<option value="'.$m->id.'" name="manager">'.$m->nume.' '.$m->prenume.'</option>';
+                            echo '<option value="'.$m->nume.'" name="manager">'.$m->nume.' '.$m->prenume.'</option>';
                         }
                         ?>
                     </select>
@@ -169,7 +160,7 @@ if (Input::exists()) {
                                         document.getElementById("email").value = this.responseText;
                                     }
                                 };
-                                xmlhttp.open("GET","getuseremail.php?id="+str,true);
+                                xmlhttp.open("GET","getuseremail.php?nume="+str,true);
                                 xmlhttp.send();
                             }
                         }
@@ -177,7 +168,7 @@ if (Input::exists()) {
                     </script>
                     <!-- Email -->
                     <label for='email'>E-mail</label>
-                    <input type="email" name="email" id="email" class="form-control mb-6 " disabled value="">
+                    <input type="email" name="email" id="email" class="form-control mb-6 " value="">
                     <!-- Oras -->
                     <label for='motiv'>Motiv</label>
                     <input type="text" name="motiv" id="motiv" class="form-control mb-6" placeholder="motiv">

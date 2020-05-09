@@ -63,7 +63,7 @@ $usera = $_GET['user'];
         </nav>
         <div class="container">
             <div class="row">
-                <label for='prenume'>Departament</label>
+                <label for='departament'>Departament</label>
                 <select class="browser-default custom-select" name="departSelect">
                     <?php
                     $departament = new Departament();
@@ -89,7 +89,6 @@ $usera = $_GET['user'];
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nume</th>
-                            <th scope="col">Prenume</th>
                             <th scope="col">E-mail</th>
                             <th scope="col">Motiv</th>
                             <th scope="col">Data inceput</th>
@@ -106,7 +105,6 @@ $usera = $_GET['user'];
                                     echo '<tr>';
                                     echo '<th>'.$c->id.'</th>';
                                     echo '<th>'.$c->nume.'</th>';
-                                    echo '<th>'.$c->prenume.'</th>';
                                     echo '<th>'.$c->email.'</th>';
                                     echo '<th>'.$c->motiv.'</th>';
                                     echo '<th>'.$c->data_inceput.'</th>';

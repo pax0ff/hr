@@ -1,6 +1,6 @@
 <?php
 require_once 'core/init.php';
-$id = $_GET['id'];
+$nume = $_GET['nume'];
 $angajat = new Angajat();
-$angajatEmail = $angajat->getAngajatEmail($id)[0]->email;
+$angajatEmail = $angajat->getAngajatEmail($nume)[0]->email;
 echo $angajatEmail;

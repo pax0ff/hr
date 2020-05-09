@@ -69,9 +69,9 @@ class Angajat
         }
         return  $this->data()->results();
     }
-    public function getAngajatEmail($id)
+    public function getAngajatEmail($nume)
     {
-        $data = $this->_db->get('`angajat`', array('`id`', '=', $id));
+        $data = $this->_db->get('`angajat`', array('`nume`', '=', $nume));
         if($data->count()) {
             $this->_data = $data;
         }

@@ -75,7 +75,7 @@ require_once 'core/init.php';
                 ?>
                 <h4 style="text-align: center">Pontari</h4>
                 <div class="pontariTable">
-                    <table class="table">
+                    <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
