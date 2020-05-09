@@ -134,4 +134,11 @@ class Pontaj
         }
         return  $this->data()->results();
     }
+
+    public function createPontajPaza($fields = array())
+    {
+        if(!$this->_db->insert('paza', $fields)) {
+            throw new Exception('Sorry, there was a problem to pontaj');
+        }
+    }
 }

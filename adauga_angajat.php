@@ -29,12 +29,12 @@ if (Input::exists()) {
             'min' => 2,
             'max' => 50
         ),
-        'departament' => array(
-            'departament' => 'departament',
+        'departSelect' => array(
+            'departSelect' => 'departSelect',
             'required' => true
         ),
-        'functie' => array(
-            'functie' => 'functie',
+        'functieSelect' => array(
+            'functieSelect' => 'functieSelect',
             'required' => true
         ),
         'join_date' => array(
@@ -53,6 +53,15 @@ if (Input::exists()) {
 
     if ($validate->passed()) {
         $angajat = new Angajat();
+        $user = new User();
+        $path = "Angajati/";
+        $nume = Input::get('nume');
+        $prenume = Input::get('prenume');
+        if(!file_exists($path.$nume.$prenume))
+        {
+            $newPath = $path.$nume.' '.$prenume;
+            mkdir("{$newPath}", 0777, true);
+        }
 
         try {
             $angajat->createAngajat(array(
@@ -60,15 +69,30 @@ if (Input::exists()) {
                 'password' => md5(Input::get('password')),
                 'nume' => Input::get('nume'),
                 'prenume'=>Input::get('prenume'),
-                'departament' => 0,
-                'functie' => Input::get('functie'),
+                'departament' => Input::get('departSelect'),
+                'functie' => Input::get('functieSelect'),
                 'group_id' => 3,
                 'join_date' => Input::get('join_date'),
                 'email' => Input::get('email'),
                 'varsta' => Input::get('varsta'),
                 'oras' => Input::get('oras'),
             ));
-            Session::flash('angajatSuccess', 'Angajatul a fost adaugat');
+
+            $user->create(array(
+                'name' => Input::get('nume'),
+                'prenume' => Input::get('prenume'),
+                'varsta' => Input::get('varsta'),
+                'oras' => Input::get('oras'),
+                'email' => Input::get('email'),
+                'username' => Input::get('username'),
+                'password' => Hash::make(Input::get('password')),
+                'joined' => date('Y-m-d H:i:s'),
+                'group' => 3,
+                'departament' => Input::get('departSelect'),
+                'functie' => Input::get('functieSelect')
+            ));
+
+            Session::flash('angajatSuccess', 'Angajatul a fost adaugat, contul a fost creat, folderul a fost creat!');
             Redirect::to($_SERVER['PHP_SELF'].'?user='.$_GET['user']);
 
         } catch(Exception $e) {
@@ -176,19 +200,39 @@ if (Input::exists()) {
                     <input type="text" name="oras" id="oras" class="form-control mb-6" placeholder="Oras">
 
                     <!-- Oras -->
-                    <label for='departament'>Departament</label>
-                    <input type="text" name="departament" id="departament" class="form-control mb-6" placeholder="Departament">
+                    <label for='manager'>Departament</label>
+                    <select class="browser-default custom-select" name="departSelect">
+
+                        <?php
+                        $departament = new Departament();
+                        $departamente = $departament->getData();
+                        foreach($departamente as $m)
+                        {
+                            echo '<option value="'.$m->id.'" name="manager">'.$m->nume.'</option>';
+                        }
+                        ?>
+                    </select>
 
                     <!-- Email -->
-                    <label for='functie'>Functie</label>
-                    <input type="text" name="functie" id="functie" class="form-control mb-6" placeholder="functie">
+                    <label for='manager'>Functie</label>
+                    <select class="browser-default custom-select" name="functieSelect">
+
+                        <?php
+                        $functie = new Functie();
+                        $functii = $functie->getData();
+                        foreach($functii as $m)
+                        {
+                            echo '<option value="'.$m->nume_functie.'" name="manager">'.$m->nume_functie.'</option>';
+                        }
+                        ?>
+                    </select>
 
                     <!-- Data inceput -->
                     <label for='dateStart'>Data angajare</label>
                     <input type="date" name="join_date" id="join_date" class="form-control mb-6">
 
 
-                    <input class="btn btn-info btn-block my-4" type="submit" value="Adauga concediu">
+                    <input class="btn btn-info btn-block my-4" type="submit" value="Adauga angajat">
 
 
                 </form>

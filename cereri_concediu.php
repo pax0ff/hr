@@ -61,7 +61,21 @@ $usera = $_GET['user'];
                 </ul>
             </div>
         </nav>
-
+        <div class="container">
+            <div class="row">
+                <label for='prenume'>Departament</label>
+                <select class="browser-default custom-select" name="departSelect">
+                    <?php
+                    $departament = new Departament();
+                    $departamente = $departament->getData();
+                    foreach ($departamente as $d)
+                    {
+                        echo "<option value='$d->id'>".$d->nume."</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="col-md-12 col-lg-12 justify-content-center">
                 <?php

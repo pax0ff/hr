@@ -11,52 +11,32 @@ if (Input::exists()) {
             'min' => 2,
             'max' => 50
         ),
-        'motiv' => array(
-            'motiv' => "motiv",
-            'required' => true,
-            'min' => 3,
-            'max'=> 50
-        ),
         'prenume' => array(
             'prenume' => 'prenume',
             'required' => true,
             'min' => 2,
             'max' => 50
         ),
-        'email' => array(
-            'email' => 'E-mail',
+        'cnp' => array(
+            'cnp' => 'cnp',
             'required' => true,
-            'min' => 2,
-            'max' => 50
-        ),
-        'dateStart' => array(
-            'dateStart' => 'dateStart',
-            'required' => true
-        ),
-        'dateEnd' => array(
-            'dateEnd' => 'dateEnd',
-            'required' => true
+            'min' => 13,
+            'max' => 13
         )
     ));
 
     if ($validate->passed()) {
-        $concediu = new Concediu();
+        $pontaj = new Pontaj();
 
         try {
-            $concediu->createConcediu(array(
+            $pontaj->createPontaj(array(
                 'nume' => Input::get('nume'),
                 'prenume' => Input::get('prenume'),
-                'email' => Input::get('email'),
-                'motiv' => Input::get('motiv'),
-                'data_inceput' => Input::get('dateStart'),
-                'data_sfarsit' => Input::get('dateEnd'),
-                'adaugat_de' => Input::get('adaugat_de'),
-                'aprobat' => 0
+                'cnp' => Input::get('cnp')
             ));
 
-                Session::flash('concediuSuccess', 'Concediul a fost inregistrat cu succes.Veti primi un email pe adresa '.Input::get('email').' in cel mai scurt timp cu detaliile aferente.');
-                Redirect::to($_SERVER['PHP_SELF'].'?user='.$_GET['user']);
-
+            Session::flash('pontajSuccess', 'Pontajul a fost inregistrat cu succes');
+            Redirect::to($_SERVER['PHP_SELF'].'?user='.$_GET['user']);
         } catch(Exception $e) {
             echo $e->getTraceAsString(), '<br>';
         }
@@ -132,72 +112,26 @@ if (Input::exists()) {
         <div class="container col-lg-5 col-md-5 col-sm-5">
             <div class="col-md-12 col-lg-12 justify-content-center" id="formmm">
                 <form class="text-center border border-light p-5" action="" method="post">
-                    <p class="h4 mb-4">Concediu</p>
-                    <?php if(Session::exists('concediuSuccess')) { ?>
+                    <p class="h4 mb-4">Pontaj</p>
+                    <?php if(Session::exists('pontajSuccess')) { ?>
                         <div class="text-center alert alert-success">
-                            <?php echo '<p>' . Session::flash('concediuSuccess'). '</p>'; ?>
+                            <?php echo '<p>' . Session::flash('pontajSuccess'). '</p>'; ?>
                         </div>
                     <?php } ?>
-                    <!-- Nume -->
-                    <label for='nume'>Nume angajat</label>
-                    <select class="browser-default custom-select" name="numeSelect" onchange="showEmail(this.value)">
 
-                        <?php
-                        $angajat = new Angajat();
-                        $angajati = $angajat->getData();
-                        foreach($angajati as $m)
-                        {
-                            echo '<option value="'.$m->id.'" name="manager">'.$m->nume.' '.$m->prenume.'</option>';
-                        }
-                        ?>
-                    </select>
-                    <!--<input type="text" name="nume" id="nume" class="form-control mb-6" placeholder="nume">-->
+                    <!-- Nume -->
+                    <label for='nume'>Nume</label>
+                    <input type="text" name="nume" id="nume" class="form-control mb-6" placeholder="nume">
 
                     <!-- Prenume -->
-                    <!--<label for='prenume'>Prenume</label>
-                    <input type="text" name="prenume" id="prenume" class="form-control mb-6" placeholder="prenume">-->
-                    <script>
-                        function showEmail(str)
-                        {
-                            if (str == "") {
-                                document.getElementById("email").innerHTML = "";
-                                return;
-                            } else {
-                                var xmlhttp = new XMLHttpRequest();
-                                xmlhttp.onreadystatechange = function() {
-                                    if (this.readyState == 4 && this.status == 200) {
-                                        document.getElementById("email").value = this.responseText;
-                                    }
-                                };
-                                xmlhttp.open("GET","getuseremail.php?id="+str,true);
-                                xmlhttp.send();
-                            }
-                        }
+                    <label for='prenume'>Prenume</label>
+                    <input type="text" name="prenume" id="prenume" class="form-control mb-6" placeholder="nrenume">
 
-                    </script>
-                    <!-- Email -->
-                    <label for='email'>E-mail</label>
-                    <input type="email" name="email" id="email" class="form-control mb-6 " disabled value="">
                     <!-- Oras -->
-                    <label for='motiv'>Motiv</label>
-                    <input type="text" name="motiv" id="motiv" class="form-control mb-6" placeholder="motiv">
+                    <label for='cnp'>CNP</label>
+                    <input type="text" name="cnp" id="cnp" class="form-control mb-6" placeholder="CNP">
 
-
-
-
-                    <!-- Data inceput -->
-                    <label for='dateStart'>Data inceput</label>
-                    <input type="date" name="dateStart" id="dateStart" class="form-control mb-6">
-
-                    <!-- Data sfarsit -->
-                    <label for='dateEnd'>Data sfarsit</label>
-                    <input type="date" name="dateEnd" id="dateEnd" class="form-control mb-6">
-
-
-
-                    <input type="hidden" name="adaugat_de" id="adaugat_de" value="<?php echo $_GET['user'] ?>">
-
-                    <input class="btn btn-info btn-block my-4" type="submit" value="Adauga concediu">
+                    <input class="btn btn-info btn-block my-4" type="submit" value="Ponteaza">
 
 
                 </form>

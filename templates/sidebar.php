@@ -60,6 +60,14 @@ if($user->hasPermission('hr'))
             <a href="adauga_functie?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Adauga functie</a>
         </div>
     </div>
+    <?php } else if($user->hasPermission('paza')) { ?>
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">Paza - <?php echo $username; ?></div>
+        <div class="list-group list-group-flush">
+            <a href="adauga_pontaj_paza?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light" ">Pontaj nou</a>
+            <a href="vezi_pontaj?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Vezi pontaje</a>
+        </div>
+    </div>
 <?php } else { ?>
 <div class="bg-light border-right" id="sidebar-wrapper">
     <div class="sidebar-heading">ANGAJAT - <?php echo $username; ?></div>

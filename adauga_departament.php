@@ -126,7 +126,7 @@ if (Input::exists()) {
                     <!--<input type="text" name="manager" id="password" class="form-control mb-6" placeholder="Manager">-->
 
 
-                    <input class="btn btn-info btn-block my-4" type="submit" value="Adauga concediu">
+                    <input class="btn btn-info btn-block my-4" type="submit" value="Adauga departament nou">
 
 
                 </form>

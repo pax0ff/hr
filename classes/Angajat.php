@@ -69,14 +69,12 @@ class Angajat
         }
         return  $this->data()->results();
     }
-    public function geAngajatEmail($nume)
+    public function getAngajatEmail($id)
     {
-        $data = $this->_db->get('angajat', array('name', '=', $nume));
+        $data = $this->_db->get('`angajat`', array('`id`', '=', $id));
         if($data->count()) {
-            return $data->first()->email;
+            $this->_data = $data;
         }
-        else { ?>
-            <div class="alert alert-danger">User-ul nu a fost gasit</div>
-        <?php    }
+        return $this->data()->results();
     }
 }
