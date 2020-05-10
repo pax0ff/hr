@@ -42,7 +42,7 @@ if (Input::exists()) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Angajati</title>
+    <title>Adauga functie</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -75,18 +75,13 @@ if (Input::exists()) {
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
+                            Menu
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="logout">LOG OUT</a>
                         </div>
                     </li>
                 </ul>
@@ -96,7 +91,7 @@ if (Input::exists()) {
         <div class="container col-lg-5 col-md-5 col-sm-5">
             <div class="col-md-12 col-lg-12 justify-content-center" id="formmm">
                 <form class="text-center border border-light p-5" action="" method="post">
-                    <p class="h4 mb-4">Adaugare departament</p>
+                    <p class="h4 mb-4">Adaugare functie</p>
                     <?php if(Session::exists('functieSuccess')) { ?>
                         <div class="text-center alert alert-success">
                             <?php echo '<p>' . Session::flash('functieSuccess'). '</p>'; ?>

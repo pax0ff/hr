@@ -44,6 +44,12 @@ class Angajat
             throw new Exception('There was a problem updating');
         }
     }
+    public function updateUser($id,$fields = array())
+    {
+        if(!$this->_db->update('users', $id, $fields)) {
+            throw new Exception('There was a problem updating');
+        }
+    }
     public function getAngajatDataById($id)
     {
         $data = $this->_db->get('angajat', array('id', '=', $id));

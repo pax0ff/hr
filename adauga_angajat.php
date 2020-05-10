@@ -76,6 +76,8 @@ if (Input::exists()) {
                 'email' => Input::get('email'),
                 'varsta' => Input::get('varsta'),
                 'oras' => Input::get('oras'),
+                'salariu_net' => Input::get('salariu_net'),
+                'salariu_brut' => Input::get('salariu_brut')
             ));
 
             $user->create(array(
@@ -123,7 +125,8 @@ if (Input::exists()) {
 
     <!-- Custom styles for this template -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
-
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -157,10 +160,8 @@ if (Input::exists()) {
                             Dropdown
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="logout">LOG OUT</a>
                         </div>
                     </li>
                 </ul>
@@ -199,6 +200,23 @@ if (Input::exists()) {
                     <label for='Oras'>Oras</label>
                     <input type="text" name="oras" id="oras" class="form-control mb-6" placeholder="Oras">
 
+                    <label for='Salariu brut'>Salariu brut</label>
+                    <input type="text" name="salariu_brut" id="salariu_brut" class="form-control mb-6" placeholder="Salariu Brut">
+                    <script>
+                        $(document).ready(function() {
+                            $("#salariu_net_btn").click(function () {
+                                var salariuBrut = $("#salariu_brut").val();
+                                var salariuNet;
+                                salariuNet = salariuBrut - (0.25*salariuBrut + 0.10*salariuBrut + 0.10*salariuBrut);
+                                $('#salariu_net').val(salariuNet);
+                                //alert(salariuNet);
+                            });
+                        });
+                    </script>
+                    <label for='Salariu net'>Salariu net</label>
+                    <div style="display: flex">
+                    <input class="form-control mb-6" type="text" name="salariu_net" id="salariu_net" value="">
+                    <button type="button" id="salariu_net_btn" class="form-control mb-6" style="width:150px; margin-left: 1rem;">Calculeaza</button></div>
                     <!-- Oras -->
                     <label for='manager'>Departament</label>
                     <select class="browser-default custom-select" name="departSelect">
@@ -245,8 +263,7 @@ if (Input::exists()) {
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Menu Toggle Script -->
     <script>

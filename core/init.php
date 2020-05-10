@@ -22,7 +22,7 @@ $GLOBALS['config'] = array(
         'nume' => 'ITDESK',
         'cod_fiscal' => "RO12345678",
         'reg_comert' => "J23/123/1234567",
-        'nr_inregistrare'=> ""
+        'nr_inregistrare'=> "12345/08.03.2002"
     )
 );
 

@@ -3,6 +3,7 @@ require 'core/init.php';
 $id = $_GET['id'];
 $user = $_GET['user'];
 $angajat = new Angajat();
+
 if(Input::exists() && isset($_POST['update'])) {
     try {
         $angajat->update($id, array(
@@ -12,10 +13,23 @@ if(Input::exists() && isset($_POST['update'])) {
             'email' => Input::get('email'),
             'varsta' => Input::get('varsta'),
             'oras' => Input::get('oras'),
+            'group_id' => Input::get('departSelect'),
             'join_date' => Input::get('data_angajare'),
             'departament' => Input::get('departSelect'),
-            'functie' => Input::get('functieSelect'),
+            'functie' => Input::get('functieSelect')
         ));
+        /*$angajat->updateUser($id, array(
+            'username' => Input::get('username'),
+            'name' => Input::get('nume'),
+            'prenume' => Input::get('prenume'),
+            'email' => Input::get('email'),
+            'group' => Input::get('departSelect'),
+            'varsta' => Input::get('varsta'),
+            'oras' => Input::get('oras'),
+            'joined' => Input::get('data_angajare'),
+            'departament' => Input::get('departSelect'),
+            'functie' => Input::get('functieSelect')
+        ));*/
         Session::flash('updateAngajatSuccess', 'Toate datele au fost updatate cu success!');
         //Redirect::to('index.php');
 
@@ -33,7 +47,7 @@ if(Input::exists() && isset($_POST['update'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ANGAJAT - editare</title>
+    <title>ANGAJAT::editare</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -108,8 +122,8 @@ if(Input::exists() && isset($_POST['update'])) {
                         echo '<label for="Username">Username</label><input class="form-control" name="username" type="text" value="'.$c->username.'"><br>';
                         echo '<label for="Nume">Nume</label><input class="form-control" name="nume" type="text" value="'.$c->nume.'"><br>';
                         echo '<label for="Prenume">Prenume</label><input class="form-control" name="prenume" type="text" value="'.$c->prenume.'"><br>';
-                        echo '<label for="Varsta">Prenume</label><input class="form-control" name="varsta" type="text" value="'.$c->varsta.'"><br>';
-                        echo '<label for="Oras">Prenume</label><input class="form-control" name="oras" type="text" value="'.$c->oras.'"><br>';
+                        echo '<label for="Varsta">Varsta</label><input class="form-control" name="varsta" type="text" value="'.$c->varsta.'"><br>';
+                        echo '<label for="Oras">Oras</label><input class="form-control" name="oras" type="text" value="'.$c->oras.'"><br>';
                         echo '<label for="Email">E-mail</label><input class="form-control" name="email" type="text" value="'.$c->email.'"><br>';
                         //<input class="form-control" name="motiv"  type="text" value="'.$c->departament.'"><br>';
                        // echo '<label for="Functie">Functie</label><input name="motiv"  type="text" value="'.$c->functie.'"><br>';

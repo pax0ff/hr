@@ -35,7 +35,7 @@ if(Input::exists()) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard-ADMIN</title>
+    <title>PONTAJ::Vezi pontaje</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

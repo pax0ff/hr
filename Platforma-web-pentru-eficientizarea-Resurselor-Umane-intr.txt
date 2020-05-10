@@ -69,58 +69,6 @@ Sa respecte toate protocoalele
 Fiecare angajat sa aibe un cont si o parola
 Pe baza contului si parolei sa poata avea acces la intranet
 Toate cererile de concediu sa fie facute pe un calendar
-v		Platforma web pentru eficientizarea Resurselor Umane intr-o companie 
-La intrarea in aplicatie sa ai doua variante de acces : Angajat/ Personal sau Vizitator : 
-Daca persoana in cauza este pur si simplu un vizitator trebuie sa selecteze pentru care este motivul vizitei: afaceri, intalnire sau angajare. 
-Acesta in urma introducerii Numelui si Prenumelui in urma apasarii butonului de submit fie ii apar toate datele personale fie trebuiesc introduse de persoana in sine.
-In urma introducerii datelor personale receptionera sa primeasca un word/pdf cu un regulament/contract cu datele persoanei in cauza cu cateva adaugari despre regulamentul de ordine interioara si acesta il va semna pentru a dovedi ca a luat la cunostinta ( daca putem face asta totul in format electronic ar fi super)
-In urma fiecarei persoane care intra in firma sa existe un excel pe zile unde sa apara ora, data, numele si prenumele persoanei.
-In cazul persoanei care este Angajata 
-Persoanele angajate trebuie sa aibe un INTRANET
-Fiecare angajat trebuie sa aibe urmatoarele optiuni : Pontare, vizualizarea pontajului pe zilele saptamanii, posibilitatea de cerere de concediu, posibilitate de cerere de concediu medical, sa contina fisa postului, cerere de demisie, posibiltatea decontarii in regim online. Toate cele enumerate anterior trebuie sa fie in format web iar la finalul introducerii de date personale trebuie sa primeasca un fisier word/pdf intitulat Cerere de... !  Pe langa asta, cand angajatul doreste sa isi faca o cerere de concediu si persoana care lucreaza in schimb cu el sau este pe post cu el concomitent si-a facut deja cerere sa nu aibe posibilitatea daca postul ramane liber. 
-Fiecare cerere trebuie sa ajunga la biroul HR si Manager de departament.
-Indiferent de angajat trebuie sa aibe o evidenta a sucventiei de la cantina (in cazul in care exista). 
-Manager de departament
-V-om crea sa zicem 4 departamente, fiecare departament cu cate o specializare (Ex: Intr-un service avem Tinichigerie, Vopsitorie, Mecanica, Custom) 
-Fiecare departament trebuie sa aibe un Manager coordonator care sa aibe in subordine un numar de angajati. 
-Manager-ul trebuie sa aibe in Intranet o sectiune unde poate vedea fiecare angajat cat a produs din target-ul impus de acesta. 
-Manager-ul poate vedea cererile de concediu si poate accepta cererea de concediu a subordonatului sau.
-Acesta poate invoi o persoana intr-o anumita zi.
-Manager-ul poate introduce target-ul pe fiecare angajat
-Poate oferi un feedback sub forma de nota care sa il trimita direct departamentului HR si angajatului
-Sa aibe o sectiune intitulata : „Probleme administrative” unde se vor afla toate probleme de necesitate medie in companie si „Probleme urgente” care dupa nume sa aibe intaietate in rezolvarea acestora care din ele sa le distribuie angajatilor din subordine, acestea fiind primite la randul lor de CEO sau de alti Manageri! 
-Sa primeasca notificari din partea celorlalti manager-i pentru sedinte, probleme etc. 
-Departamentul HR 
-Departamentul HR trebuie sa aibe un INTRANET cat mai dezvoltat 
-Ce optiuni au cei din departamentul HR nu au nici Manager-ii nici CEO si nici angajatii.
-Acestia pot accepta cererile de concediu trimise de angajati si de manager-i.
-Acestia primesc in format electronic toate cererile de la angajati si ei au dreptul de a le accepta sau refuza (Dupa caz) in urma actiunii sa fie trimis un feedback catre angajat.
-Acestia sa aibe fisiere pentru fiecare angajat in parte cu numele angajatului unde sa fie depozitate toate cererile. (Asta pentru o buna organizare a datelor)
-Acestia au posibilitatea de vizualizare a datelor personale ale fiecarui angajat
-Pot vedea feedback-urile primite de la manager-i pentru angajati si de la CEO pentru Manager-i
-Sa aibe o sectiune unde sa organizeze sedinte, meeting-uri cu manager-ii si cu anumiti angajati din departamentul lui
-Acestea sa poata schimba numele functiei si datele personale ale angajatilor
-Sa poata promova si sa poata creste sau scade salariul fiecarei persoane in parte
-Sa completeze pentru fiecare angajat fisa acestuia cu Numele functiei, Numele si Prenumele angajatului, salariul brut, salariul net, drepturi, obligatii etc.
-Sa poata elimina din soft anumiti angajati ce si-au depus demisia sau sa adauge alte persoane ce au fost angajate 
-Cand au adaugat alte persoane noi angajate Sa apara automat folder cu numele si prenumele persoanei in cauza unde vor fi depozitate mai tarziu cererile
-Poate trimite notificari catre manager-i si catre CEO
-CEO :
-Poate sa aiba acces la feedback, cereri din partea departamentului HR si a manager-ilor companiei
-Sa poata crea cerere de concediere sau excluderea din functia de manager a anumitor persoane
-Sa aibe si acesta cerere de concediu si cerere de demisie in soft
-
-
-Soft-ul trebuie sa : 
-Calculeze automat numarul de zile de concediu in functie de luna angajarii
-Sa respecte toate protocoalele
-Fiecare angajat sa aibe un cont si o parola
-Pe baza contului si parolei sa poata avea acces la intranet
-Toate cererile de concediu sa fie facute pe un calendar
-
-
-
-
 
 
 PRIORITATI:

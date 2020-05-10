@@ -13,7 +13,7 @@ $user = new User($username);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard-ADMIN</title>
+    <title>DASHBOARD::Angajat</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

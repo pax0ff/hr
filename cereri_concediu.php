@@ -10,7 +10,7 @@ $usera = $_GET['user'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Concedii</title>
+    <title>CONCEDIU::Cereri</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,10 +47,9 @@ $usera = $_GET['user'];
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Options
+                            Menu
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="profile?user=<?php echo $username; ?>">Profile</a>

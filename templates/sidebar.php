@@ -26,7 +26,12 @@ if($user->hasPermission('hr'))
         <a href="departamente?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Departamente</a>
         <a href="adauga_departament?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Departament nou</a>
         <a href="adauga_functie?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Adauga functie</a>
-        <a href="adeverinta_noua?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Adeverinta noua</a>
+        <h4 class="list-group-item bg-light">Adeverinte</h4>
+        <div>
+            <a href="adeverinta_salariat?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Adeverinta salariat</a>
+            <a href="adeverinta_venit?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Adeverinta venit</a>
+            <a href="adeverinta_venit_cnas?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Adeverinta venit CNAS</a>
+        </div>
     </div>
 </div>
 <?php } else if($user->hasPermission('manager')) { ?>
