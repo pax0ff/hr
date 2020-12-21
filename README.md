@@ -5,13 +5,17 @@
 
 1. Generare ssh key:
 	1. Descarcare PuTTYGen.exe , de la adresa urmatoare: [external link](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+
 	2. Pentru sistem de operare WINDOWS:
 		* Trebuie creat folder-ul .ssh in C:\Users[username]
-		* Trebuie sa salveze cheia ssh in folderul de mai sus , cu numele ID_rsa<br/>
-		* Cheia public (ID_rsa.pub) trebuie trimisa la adresa de e-mail: stefan.smarandache96@gmail.com / sau anuntat pe discord faptul ca v-ati generat cheia si vreti sa o adugati in _repo_ pentru clonare.<br/>
-	3. Pentru sisteme de operare Linux/Ubuntu/MacOS : ssh-keygen. Nu introduci nici un pass-phrase sau orice altceva , doar o trimiti catre adresa de mai sus.
-<br/>
+		* Trebuie sa salveze cheia ssh in folderul de mai sus , cu numele ID_rsa 
+		* Cheia public (ID_rsa.pub) trebuie trimisa la adresa de e-mail: 
+		stefan.smarandache96@gmail.com / sau anuntat pe discord faptul ca v-ati generat cheia si vreti sa o adugati in _repo_ pentru clonare 
+		
+	3. Pentru sisteme de operare Linux/Ubuntu/MacOS : ssh-keygen. Nu introduci nici un pass-phrase sau orice altceva , doar o trimiti catre adresa de mai sus
+
 2. Instalare server local: 
+
 	* Windows: XAMPP/WAMP
 	* Linux: LAMP/Servicii separate(Apache,Nginx,Sql)
 	* MacOS: MAMP/Servicii separate
@@ -20,7 +24,7 @@
 	* git clone git@github.com:ClubulDeInformatica/HR.git 
 
 4. Creare branch local nou, folosind:
- 	* git branch FE_x/BE_x 
+	* git branch FE_x/BE_x 
 
 		(**FE** - Task-uri FrontEnd , **BE** - Task-uri BackEnd, **X** - reprezinta numarul taskului atribuit pe github).
 
