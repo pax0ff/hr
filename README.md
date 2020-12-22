@@ -10,7 +10,7 @@
 		* Trebuie sa salveze cheia ssh in folderul de mai sus , cu numele ID_rsa 
 		* Cheia public (ID_rsa.pub) trebuie trimisa la adresa de e-mail: 
 		stefan.smarandache96@gmail.com / sau anuntat pe discord faptul ca v-ati generat cheia si vreti sa o adugati in _repo_ pentru clonare 		
-	3. Pentru sisteme de operare Linux/Ubuntu/MacOS : ssh-keygen. Nu introduci nici un pass-phrase sau orice altceva , doar o trimiti catre adresa de mai sus
+	3. Pentru sisteme de operare Linux/Ubuntu/MacOS : ssh-keygen[mai mult aici](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key). Nu introduci nici un pass-phrase sau orice altceva , doar o trimiti catre adresa de mai sus
 2. Instalare server local: 
 	* Windows: XAMPP/WAMP
 	* Linux: LAMP/Servicii separate(Apache,Nginx,Sql)
