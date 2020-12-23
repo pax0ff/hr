@@ -1,4 +1,5 @@
 # HR
+## Mihaita barosan de barosan
 Aplicatie web pentru departamentul de HR al unei firme
 
 Pasi de urmat pentru dezvoltarea locala:<br/>
