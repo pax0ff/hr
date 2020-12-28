@@ -1,10 +1,6 @@
 # HR
 
-## Aplicatie web pentru departamentul de HR al unei firme
-
-## Mihaita barosan de barosannnnnnnn
-Aplicatie web pentru departamentul de HR al unei firme
-
+Aplicatie web pentru departamentul de HR al unei companii.
 
 ### Pasi de urmat pentru dezvoltarea locala:
 
