@@ -12,7 +12,7 @@ if($user->hasPermission('hr'))
 <div class="bg-light border-right" id="sidebar-wrapper">
     <div class="sidebar-heading">Bine ai venit - <?php echo $username;?></div>
     <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="dashboard_hr?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="pontaj_nou?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light" ">Pontaj nou</a>
         <a href="vezi_pontaj?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Vezi pontaje</a>
         <a href="cereri_concediu?user=<?php echo $username;?>" class="list-group-item list-group-item-action bg-light">Cereri concediu</a>

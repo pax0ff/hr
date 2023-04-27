@@ -46,7 +46,7 @@ $usera = $_GET['user'];
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Acasa <span class="sr-only">(current)</span></a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -63,7 +63,7 @@ $usera = $_GET['user'];
             </div>
         </nav>
 
-        <div class="container-fluid">
+        <div class="container">
             <div class="col-md-12 col-lg-12 justify-content-center">
                 <?php
                     $angajat = new Angajat();

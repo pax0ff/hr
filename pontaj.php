@@ -57,7 +57,7 @@ if(Input::exists()) {
     <div class="bg-light border-right" id="sidebar-wrapper">
         <div class="sidebar-heading">Start Bootstrap </div>
         <div class="list-group list-group-flush">
-            <a href="dashboard_angajat" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+            <a href="dashboard_angajat?user=<?php  echo $username; ?>" class="list-group-item list-group-item-action bg-light">Dashboard</a>
             <a href="pontaj?user=<?php echo $username; ?>" class="list-group-item list-group-item-action bg-light">Pontaj</a>
             <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
             <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
@@ -71,7 +71,7 @@ if(Input::exists()) {
     <div id="page-content-wrapper">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <button class="btn btn-primary" id="menu-toggle">Close menu</button>
+            <button class="btn btn-primary" id="menu-toggle"><<</button>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -80,7 +80,7 @@ if(Input::exists()) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Acasa <span class="sr-only">(current)</span></a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -195,10 +195,10 @@ if(Input::exists()) {
         $("#wrapper").toggleClass("toggled");
         if($(".d-flex").hasClass("toggled"))
         {
-            $("#menu-toggle").text("Open menu");
+            $("#menu-toggle").text(">>");
         }
         else {
-            $("#menu-toggle").text("Close menu");
+            $("#menu-toggle").text("<<");
         }
 
     });

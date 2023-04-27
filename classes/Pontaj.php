@@ -53,6 +53,7 @@ class Pontaj
                     $x++;
                 }
                 $sql .= " FROM {$table1} JOIN {$table2} WHERE {$table1}.{$field} {$operator} {$table2}.{$value}";
+                print_r($sql);
                 if(!$this->_db->query($sql,array($value))->error())
                 {
                     $this->_results = $this->_db->query($sql,array($value));
@@ -109,7 +110,7 @@ class Pontaj
         {
             $_error = false;
             echo "<pre>";
-            $sql = "SELECT name FROM users WHERE name='$user'";
+            $sql = "SELECT name FROM users WHERE name={$user}";
             if(!$this->_db->simpleQuery($sql)->error())
             {
                 $this->_results = $this->_db->simpleQuery($sql);

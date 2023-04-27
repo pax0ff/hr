@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="124" height="124" viewBox="0 0 124 124">
+  <defs>
+    <filter id="Ellipse_1" x="0" y="0" width="124" height="124" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.259"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Component_2_1" data-name="Component 2 – 1" transform="translate(22.5 22.5)">
+    <g transform="matrix(1, 0, 0, 1, -22.5, -22.5)" filter="url(#Ellipse_1)">
+      <circle id="Ellipse_1-2" data-name="Ellipse 1" cx="39.5" cy="39.5" r="39.5" transform="translate(22.5 22.5)" fill="#f1291e"/>
+    </g>
+    <path id="Icon_simple-boost" data-name="Icon simple-boost" d="M20.07,23.731a2.269,2.269,0,0,0,.207-.19,2.893,2.893,0,0,0,0-4.021l-9.9-10.15c-.069.063-.138.126-.2.193a2.89,2.89,0,0,0,0,4.022l9.9,10.147ZM27.337,9.268a3.752,3.752,0,0,1,2,1.108,4.185,4.185,0,0,1,0,5.7l-7.051,7.419a2.722,2.722,0,0,1-1.647.808l4.192,4.308L3.117,23.839a3.8,3.8,0,0,1-1.995-1.114,4.181,4.181,0,0,1,0-5.7L8.167,9.616A2.7,2.7,0,0,1,9.821,8.8L5.626,4.5,27.335,9.268Z" transform="translate(24 22.5)" fill="#fff"/>
+  </g>
+</svg>

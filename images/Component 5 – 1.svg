@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="124" height="124" viewBox="0 0 124 124">
+  <defs>
+    <filter id="Ellipse_4" x="0" y="0" width="124" height="124" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Component_5_1" data-name="Component 5 – 1" transform="translate(22.5 22.5)">
+    <g transform="matrix(1, 0, 0, 1, -22.5, -22.5)" filter="url(#Ellipse_4)">
+      <circle id="Ellipse_4-2" data-name="Ellipse 4" cx="39.5" cy="39.5" r="39.5" transform="translate(22.5 22.5)" fill="#56e65b"/>
+    </g>
+    <g id="business_center-24px" transform="translate(22 22)">
+      <path id="Tracé_1" data-name="Tracé 1" d="M0,0H34.622V34.622H0ZM14.426,7.213H20.2V10.1h-5.77Zm0,0H20.2V10.1h-5.77Z" fill="none"/>
+      <path id="Tracé_2" data-name="Tracé 2" d="M13.541,21.753V20.311H3.457l-.015,5.77a2.875,2.875,0,0,0,2.885,2.885h20.2a2.875,2.875,0,0,0,2.885-2.885v-5.77h-10.1v1.442ZM27.966,8.77H22.181V5.885L19.3,3h-5.77L10.641,5.885V8.77H4.885A2.894,2.894,0,0,0,2,11.655v4.328a2.875,2.875,0,0,0,2.885,2.887h8.656V15.983h5.77v2.887h8.655a2.894,2.894,0,0,0,2.885-2.885V11.655A2.894,2.894,0,0,0,27.966,8.77Zm-8.655,0h-5.77V5.885h5.77Z" transform="translate(0.885 1.328)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

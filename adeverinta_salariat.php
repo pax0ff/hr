@@ -275,10 +275,10 @@ if (Input::exists()) {
             $("#wrapper").toggleClass("toggled");
             if($(".d-flex").hasClass("toggled"))
             {
-                $("#menu-toggle").text("Open menu");
+                $("#menu-toggle").text(">>");
             }
             else {
-                $("#menu-toggle").text("Close menu");
+                $("#menu-toggle").text("<<");
             }
         });
 
