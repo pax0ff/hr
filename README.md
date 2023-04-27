@@ -30,3 +30,6 @@ Aplicatie web pentru departamentul de HR al unei companii.
 	4. Pentru a aduce la zi( update) branch-ul **develop**: 
 		1. git checkout develop 
 		2. git pull
+   6.  Todo:
+   		1. doi angajati nu pot avea amandoi concediu in acelasi timp
+   		2. 
